@@ -33,9 +33,11 @@ jobs:
       run: |
         docker login -u shabnam790 -p Testing@123 
     - name: Build the Docker image
-      run: docker build -t shabnam790/internaldemo:latest .
-    - name: Docker Push
-      run: docker push shabnam790/internaldemo:latest
+      run: |
+        docker build -t shabnam790/internaldemo:latest .
+        docker run -p 6565:8080 shabnam790/internaldemo:latest
+   # - name: Docker Push
+    #  run: docker push shabnam790/internaldemo:latest
     - name: Configure AWS credentials
       uses: aws-actions/configure-aws-credentials@v1
       with:
@@ -53,5 +55,5 @@ jobs:
       run: |
         docker build -t $ECR_REGISTRY/$ECR_REPOSITORY:$IMAGE_TAG .
         docker push $ECR_REGISTRY/$ECR_REPOSITORY:$IMAGE_TAG
-        docker run -p 6565:8080  $ECR_REGISTRY/$ECR_REPOSITORY
+      
       
