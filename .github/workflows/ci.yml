@@ -35,9 +35,8 @@ jobs:
     - name: Build the Docker image
       run: |
         docker build -t shabnam790/internaldemo:latest .
-        docker run -p 6565:8080 shabnam790/internaldemo:latest
-   # - name: Docker Push
-    #  run: docker push shabnam790/internaldemo:latest
+    - name: Docker Push to dockerHub
+      run: docker push shabnam790/internaldemo:latest
     - name: Configure AWS credentials
       uses: aws-actions/configure-aws-credentials@v1
       with:
