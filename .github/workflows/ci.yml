@@ -53,9 +53,9 @@ jobs:
         IMAGE_TAG: latest
       run: |
         docker build -t internal-demo . 
-        docker push public.ecr.aws/v1v3f9d6/internal-demo:$IMAGE_TAG
+        docker push $ECR_REGISTRY/$ECR_REPOSITORY:$IMAGE_TAG
+       # docker push public.ecr.aws/v1v3f9d6/internal-demo:latest
       #  docker build -t $ECR_REGISTRY/$ECR_REPOSITORY:$IMAGE_TAG .
-      #  docker push $ECR_REGISTRY/$ECR_REPOSITORY:$IMAGE_TAG
-        
+ 
         
       
